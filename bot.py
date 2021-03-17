@@ -1394,9 +1394,9 @@ class ModmailBot(commands.Bot):
                 await self.add_reaction(after, blocked_emoji)
             else:
                 embed = discord.Embed(
-                    description="Successfully edited your message!", color=self.main_color
+                    description="<a:wumpus_thbs_up:798654709694333019> Successfully edited your message!", color=self.main_color
                 )
-                embed.set_footer(text="💬 Staff can see your new message")
+                embed.set_footer(text="💬 Staff can see your new message\nWumpus seems to like you!")
                 await after.channel.send(embed=embed)
 
     async def on_error(self, event_method, *args, **kwargs):
