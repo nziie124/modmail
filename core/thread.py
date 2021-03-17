@@ -708,7 +708,7 @@ class Thread:
             logger.warning("Failed to edit message.", exc_info=True)
             raise
         embed = linked_message.embeds[0]
-        embed.add_field(name="**💬 Edited, user's former message:**", value=embed.description)
+        embed.add_field(name="**💬 Edited, user's old message:**", value=embed.description)
         embed.description = content
         await asyncio.gather(
             self.bot.api.edit_message(message.id, content), linked_message.edit(embed=embed)
