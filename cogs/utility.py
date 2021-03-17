@@ -665,7 +665,7 @@ class Utility(commands.Cog):
     async def ping(self, ctx):
         """🏓 Pong! Returns your websocket latency."""
         embed = discord.Embed(
-            title="🏓 Pong! Websocket Latency:",
+            title="🏓💬Pong! Websocket Latency:",
             description=f"{self.bot.ws.latency * 1000:.4f} ms",
             color=self.bot.main_color,
         )
@@ -722,7 +722,7 @@ class Utility(commands.Cog):
     @checks.has_permissions(PermissionLevel.OWNER)
     async def prefix(self, ctx, *, prefix=None):
         """
-        Change the prefix of the bot.
+        🤖 Change the prefix of the bot.
 
         Type only `{prefix}prefix` to retrieve your current bot prefix.
         """
@@ -745,7 +745,7 @@ class Utility(commands.Cog):
     @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def config(self, ctx):
         """
-        Modify changeable configuration variables for this bot.
+        🔩 Modify changeable configuration variables for this bot.
 
         Type `{prefix}config options` to view a list
         of valid configuration variables.
