@@ -667,7 +667,7 @@ class Utility(commands.Cog):
         embed = discord.Embed(
             title="🏓 Pong! Websocket Latency:",
             description=f"{self.bot.ws.latency * 1000:.4f} ms",
-            color=self.bot.main_color,
+            color=discord.Colour.random(),
         )
         return await ctx.send(embed=embed)
 
