@@ -854,7 +854,7 @@ class Thread:
         if self.bot.config["show_timestamp"]:
             embed.timestamp = message.created_at
 
-        system_avatar_url = "https://discordapp.com/assets/f78426a064bc9dd24847519259bc42af.png"
+        system_avatar_url = "https://cdn.discordapp.com/attachments/809115390385848340/822195746572861480/pol-wumpus.png"
 
         if not note:
             if anonymous and from_mod and not isinstance(destination, discord.TextChannel):
