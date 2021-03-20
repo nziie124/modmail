@@ -1380,7 +1380,7 @@ class Modmail(commands.Cog):
 
         return await ctx.send(embed=embed)
 
-    @commands.command(aliases=["d"])
+    @commands.command(aliases=["delete"])
     @checks.has_permissions(PermissionLevel.MODERATOR)
     @checks.thread_only()
     async def delete(self, ctx, message_id: int = None):
