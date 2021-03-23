@@ -494,7 +494,7 @@ class Utility(commands.Cog):
             )
         )
 
-    @commands.command(aliases=["presence"])
+    @commands.command(aliases=["presence", "ac"])
     @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def activity(self, ctx, activity_type: str.lower, *, message: str = ""):
         """
