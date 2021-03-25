@@ -66,7 +66,7 @@ class ModmailHelpCommand(commands.HelpCommand):
             if perm_level is PermissionLevel.INVALID:
                 format_ = f"`{prefix + cmd.qualified_name}` "
             else:
-                format_ = f"`[{perm_level}] {prefix + cmd.qualified_name}` "
+                format_ = f"`{prefix + cmd.qualified_name}` "
 
             format_ += f"- {cmd.short_doc}\n" if cmd.short_doc else "- *No description.*\n"
             if not format_.strip():
@@ -88,7 +88,7 @@ class ModmailHelpCommand(commands.HelpCommand):
             if not format_:
                 continue
 
-            embed.add_field(name="Commands", value=format_ or "No commands.")
+            embed.add_field(name="💬 Commands", value=format_ or "No commands.")
 
             continued = " (Continued)" if embeds else ""
             name = cog.qualified_name + " - Help" if not no_cog else "Miscellaneous Commands"
@@ -96,7 +96,7 @@ class ModmailHelpCommand(commands.HelpCommand):
 
             embed.set_footer(
                 text=f'Type "{prefix}{self.command_attrs["name"]} command" '
-                "for more info on a specific command."
+                "for more help on a specific command."
             )
             embeds.append(embed)
         return embeds
@@ -112,7 +112,7 @@ class ModmailHelpCommand(commands.HelpCommand):
         bot = self.context.bot
 
         # always come first
-        default_cogs = [bot.get_cog("Modmail"), bot.get_cog("Utility"), bot.get_cog("Plugins")]
+        default_cogs = [bot.get_cog("Modmail"), bot.get_cog("Utility")]
 
         default_cogs.extend(c for c in cogs if c not in default_cogs)
 
