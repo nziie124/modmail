@@ -670,6 +670,7 @@ class Utility(commands.Cog):
             color=discord.Colour.random(),
         )
         return await ctx.send(embed=embed)
+    
     @commands.command()
     @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     @utils.trigger_typing
@@ -681,7 +682,6 @@ class Utility(commands.Cog):
             color=discord.Colour.random(),
         )
         return await ctx.send(embed=embed)
-    
 
     @commands.command()
     @checks.has_permissions(PermissionLevel.OWNER)
