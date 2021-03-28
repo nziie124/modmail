@@ -670,6 +670,18 @@ class Utility(commands.Cog):
             color=discord.Colour.random(),
         )
         return await ctx.send(embed=embed)
+    
+    @commands.command()
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
+    @utils.trigger_typing
+    async def testing(ctx):
+        """🏓 Pong! Returns your websocket latency."""
+        embed = discord.Embed(
+            title="🏓 Pong! Websocket Latency:",
+            description="test",
+            color=discord.Colour.random(),
+        )
+        return await ctx.send(embed=embed)
 
     @commands.command()
     @checks.has_permissions(PermissionLevel.OWNER)
