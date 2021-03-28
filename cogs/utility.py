@@ -681,7 +681,7 @@ class Utility(commands.Cog):
             description="test",
             color=discord.Colour.random(),
         )
-        return await ctx.send(embed=embed)
+        await ctx.send(embed=embed)
 
     @commands.command()
     @checks.has_permissions(PermissionLevel.OWNER)
