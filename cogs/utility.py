@@ -670,18 +670,6 @@ class Utility(commands.Cog):
             color=discord.Colour.random(),
         )
         return await ctx.send(embed=embed)
-    
-    @commands.command()
-    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
-    @utils.trigger_typing
-    async def test(ctx):
-        """A testing command - ignore this."""
-        embed = discord.Embed(
-            title="test",
-            description="test",
-            color=discord.Colour.random(),
-        )
-        await ctx.send(embed=embed)
 
     @commands.command()
     @checks.has_permissions(PermissionLevel.OWNER)
