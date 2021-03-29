@@ -619,7 +619,7 @@ class Modmail(commands.Cog):
             embed = discord.Embed(color=self.bot.main_color, description=message.jump_url)
         await ctx.send(embed=embed)
 
-    @commands.group(invoke_without_command=True)
+    @commands.group()
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def raw(self, ctx, message_id: int=None):
         """`[New]` - 📄 Prints out the raw content of an embed (codeblock)."""
