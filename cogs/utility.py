@@ -477,7 +477,7 @@ class Utility(commands.Cog):
     @checks.has_permissions(PermissionLevel.OWNER)
     @utils.trigger_typing
     async def debug_clear(self, ctx):
-        """Clears the locally cache logs."""
+        """📁 Clears the locally cache logs."""
 
         log_file_name = self.bot.token.split(".")[0]
 
@@ -498,7 +498,7 @@ class Utility(commands.Cog):
     @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def activity(self, ctx, activity_type: str.lower, *, message: str = ""):
         """
-        Set an activity status for the bot.
+        🎵 Set an activity status for the bot.
 
         Possible activity types:
             - `playing`
@@ -783,7 +783,7 @@ class Utility(commands.Cog):
     @config.command(name="set", aliases=["add"])
     @checks.has_permissions(PermissionLevel.OWNER)
     async def config_set(self, ctx, key: str.lower, *, value: str):
-        """Set a configuration variable and its value."""
+        """🔩 Set a configuration variable and its value."""
 
         keys = self.bot.config.public_keys
 
@@ -810,7 +810,7 @@ class Utility(commands.Cog):
     @config.command(name="remove", aliases=["del", "delete"])
     @checks.has_permissions(PermissionLevel.OWNER)
     async def config_remove(self, ctx, *, key: str.lower):
-        """Delete a set configuration variable."""
+        """🔩 Delete a set configuration variable."""
         keys = self.bot.config.public_keys
         if key in keys:
             self.bot.config.remove(key)
