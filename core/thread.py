@@ -301,7 +301,7 @@ class Thread:
         # embed.add_field(name='Registered', value=created + days(created))
 
         if user.dm_channel:
-            footer = f"👤 User ID: {user.id} • DM ID: {user.dm_channel}"
+            footer = f"👤 User ID: {user.id} • "
         else:
             footer = f"👤 User ID: {user.id}"
 
@@ -310,19 +310,19 @@ class Thread:
 
         if member is not None:
             joined = str((time - member.joined_at).days)
-            # embed.add_field(name='Joined', value=joined + days(joined))
+            # embed.add_field(name='✅ Joined', value=joined + days(joined))
             embed.description += f", joined {days(joined)}"
 
             if member.nick:
-                embed.add_field(name="Nickname", value=member.nick, inline=True)
+                embed.add_field(name="✍️ Nickname", value=member.nick, inline=True)
             if role_names:
-                embed.add_field(name="Role(s)", value=role_names, inline=True)
+                embed.add_field(name="🔔 Role(s)", value=role_names, inline=True)
             embed.set_footer(text=footer)
         else:
-            embed.set_footer(text=f"{footer} • (Not in main server)")
+            embed.set_footer(text=f"👤 {footer} • (Not in main server)")
 
         if log_count is not None:
-            # embed.add_field(name="Past logs", value=f"{log_count}")
+            # embed.add_field(name="📁 Past logs", value=f"{log_count}")
             thread = "thread" if log_count == 1 else "threads"
             embed.description += f" with **{log_count or 'no'}** past {thread}."
         else:
