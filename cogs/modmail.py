@@ -619,12 +619,12 @@ class Modmail(commands.Cog):
             embed = discord.Embed(color=self.bot.main_color, description=message.jump_url)
         await ctx.send(embed=embed)
 
-    @commands.group()
+    @commands.command()
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def raw(self, ctx, message_id: int=None):
         """`[New]` - 📄 Prints out the raw content of an embed (codeblock)."""
         if message_id is None:
-            return await ctx.send("Please provide a message ID")
+            return await ctx.send(f"{ctx.message.author.mention}, Please provide a message ID!")
         
         try:
             msg = await ctx.fetch_message(message_id)
