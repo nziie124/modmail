@@ -190,7 +190,7 @@ class Modmail(commands.Cog):
         else:
             val = truncate(escape_code_block(val), 2048 - 7)
             embed = discord.Embed(
-                title=f'Raw snippet - "{name}":',
+                title=f'✂️ Raw snippet - "{name}":',
                 description=f"```\n{val}```",
                 color=self.bot.main_color,
             )
@@ -216,7 +216,7 @@ class Modmail(commands.Cog):
             embed = discord.Embed(
                 title="Error",
                 color=self.bot.error_color,
-                description=f"Snippet `{name}` already exists.",
+                description=f"Snippet `{name}` already exists. ❌",
             )
             return await ctx.send(embed=embed)
 
@@ -224,7 +224,7 @@ class Modmail(commands.Cog):
             embed = discord.Embed(
                 title="Error",
                 color=self.bot.error_color,
-                description=f"An alias that shares the same name exists: `{name}`.",
+                description=f"An alias that shares the same name exists: `{name}`! ❌",
             )
             return await ctx.send(embed=embed)
 
@@ -232,7 +232,7 @@ class Modmail(commands.Cog):
             embed = discord.Embed(
                 title="Error",
                 color=self.bot.error_color,
-                description="Snippet names cannot be longer than 120 characters.",
+                description="Snippet names cannot be longer than 120 characters! ❌",
             )
             return await ctx.send(embed=embed)
 
@@ -267,7 +267,7 @@ class Modmail(commands.Cog):
     @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def snippet_edit(self, ctx, name: str.lower, *, value):
         """
-        Edit a snippet.
+        ✂️ Edit a snippet.
 
         To edit a multi-word snippet name, use quotes: ```
         {prefix}snippet edit "two word" this is a new two word snippet.
@@ -280,7 +280,7 @@ class Modmail(commands.Cog):
             embed = discord.Embed(
                 title="Edited snippet",
                 color=self.bot.main_color,
-                description=f'`{name}` will now send "{value}".',
+                description=f'`{name}` will now send "{value}". ✅',
             )
         else:
             embed = create_not_found_embed(name, self.bot.snippets.keys(), "Snippet")
@@ -341,9 +341,9 @@ class Modmail(commands.Cog):
         if self.bot.config["thread_move_notify_mods"]:
             mention = self.bot.config["mention"]
             if mention is not None:
-                msg = f"{mention}, thread has been moved."
+                msg = f"{mention}, thread has been moved!"
             else:
-                msg = "Thread has been moved."
+                msg = "Thread has been moved!"
             await thread.channel.send(msg)
 
         sent_emoji, _ = await self.bot.retrieve_emoji()
@@ -356,14 +356,14 @@ class Modmail(commands.Cog):
 
         embed = discord.Embed(
             title="Scheduled close",
-            description=f"This thread will close {silent}in {human_delta}.",
-            color=self.bot.error_color,
+            description=f"🔒 {self.bot.prefix}close cancel - To cancel close!",
+            color=discord.Colour.random(),
         )
 
         if after.arg and not silent:
-            embed.add_field(name="Message", value=after.arg)
+            embed.add_field(name="💬 Message", value=after.arg)
 
-        embed.set_footer(text="Closing will be cancelled if a thread message is sent.")
+        embed.set_footer(text=f"🔒 {self.bot.prefix}close cancel - To cancel close!")
         embed.timestamp = after.dt
 
         await ctx.send(embed=embed)
@@ -410,7 +410,7 @@ class Modmail(commands.Cog):
             else:
                 embed = discord.Embed(
                     color=self.bot.error_color,
-                    description="This thread has not already been scheduled to close.",
+                    description="This thread has not already been scheduled to close! 🔒",
                 )
 
             return await ctx.send(embed=embed)
@@ -723,7 +723,7 @@ class Modmail(commands.Cog):
     @checks.has_permissions(PermissionLevel.OWNER)
     async def logs_closed_by(self, ctx, *, user: User = None):
         """
-        Get all logs closed by the specified user.
+        📁 Get all logs closed by the specified user.
 
         If no `user` is provided, the user will be the person who sent this command.
         `user` may be a user ID, mention, or name.
@@ -747,7 +747,7 @@ class Modmail(commands.Cog):
     @checks.has_permissions(PermissionLevel.OWNER)
     async def logs_delete(self, ctx, key_or_link: str):
         """
-        Wipe a log entry from the database.
+        📁 Wipe a log entry from the database.
         """
         key = key_or_link.split("/")[-1]
 
@@ -762,7 +762,7 @@ class Modmail(commands.Cog):
         else:
             embed = discord.Embed(
                 title="Success",
-                description=f"Log entry `{key}` successfully deleted.",
+                description=f"Log entry `{key}` successfully deleted! ✅",
                 color=self.bot.main_color,
             )
 
@@ -772,7 +772,7 @@ class Modmail(commands.Cog):
     @checks.has_permissions(PermissionLevel.OWNER)
     async def logs_responded(self, ctx, *, user: User = None):
         """
-        Get all logs where the specified user has responded at least once.
+        📁 Get all logs where the specified user has responded at least once.
 
         If no `user` is provided, the user will be the person who sent this command.
         `user` may be a user ID, mention, or name.
@@ -797,7 +797,7 @@ class Modmail(commands.Cog):
     @checks.has_permissions(PermissionLevel.OWNER)
     async def logs_search(self, ctx, limit: Optional[int] = None, *, query):
         """
-        Retrieve all logs that contain messages with your query.
+        📁 Retrieve all logs that contain messages with your query.
 
         Provide a `limit` to specify the maximum number of logs the bot should find.
         """
@@ -818,7 +818,7 @@ class Modmail(commands.Cog):
         session = EmbedPaginatorSession(ctx, *embeds)
         await session.run()
 
-    @commands.command()
+    @commands.command(aliases=["r"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
     async def reply(self, ctx, *, msg: str = ""):
@@ -876,7 +876,7 @@ class Modmail(commands.Cog):
         async with ctx.typing():
             await ctx.thread.reply(ctx.message, anonymous=True)
 
-    @commands.command(aliases=["anonreply", "anonymousreply"])
+    @commands.command(aliases=["anonreply", "anonymousreply", "ar"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
     async def areply(self, ctx, *, msg: str = ""):
@@ -940,7 +940,7 @@ class Modmail(commands.Cog):
     @checks.thread_only()
     async def note_persistent(self, ctx, *, msg: str = ""):
         """
-        Take a persistent note about the current user.
+        📓 Take a persistent note about the current user.
         """
         ctx.message.content = msg
         async with ctx.typing():
@@ -995,7 +995,7 @@ class Modmail(commands.Cog):
         manual_trigger=True,
     ):
         """
-        📬 Create a thread with a specified member
+        📬 Create a thread with a specified member.
 
         If `category` is specified, the thread
         will be created in that specified category.
@@ -1062,7 +1062,7 @@ class Modmail(commands.Cog):
     @checks.has_permissions(PermissionLevel.MODERATOR)
     @trigger_typing
     async def blocked(self, ctx):
-        """Retrieve a list of blocked users."""
+        """🔇 Retrieve a list of blocked users."""
 
         embeds = [discord.Embed(title="Blocked Users", color=self.bot.main_color, description="")]
 
