@@ -650,7 +650,7 @@ class Modmail(commands.Cog):
     async def members(self, ctx):
         """👤 Prints out the current server's member count."""
         embed = discord.Embed(
-            description="**`{ctx.guild.member_count}` member(s)**",
+            description="**`" + ctx.guild.member_count + "` member(s)**",
             timestamp=datetime.utcnow(),
             color=discord.Colour.blurple(),
         )
