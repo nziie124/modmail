@@ -195,7 +195,7 @@ class Modmail(commands.Cog):
                 color=self.bot.main_color,
             )
 
-        return await ctx.send(content="{ctx.message.author.mention} - ", embed=embed)
+        return await ctx.send(content=ctx.message.author.mention , embed=embed)
 
     @snippet.command(name="add")
     @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
