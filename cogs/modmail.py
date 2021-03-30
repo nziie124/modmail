@@ -646,6 +646,15 @@ class Modmail(commands.Cog):
         return await ctx.send(content=ctx.message.author.mention , embed=embed)
 
     @commands.command()
+    @checks.has_permissions(PermissionLevel.REGULAR)
+    async def time(self, ctx):
+        """🕐 Prints the current time in your area."""
+        embed = discord.Embed(
+            timestamp=datetime.utcnow())
+        )
+        return await ctx.send(content=ctx.message.author.mention , embed=embed)
+
+    @commands.command()
     @checks.has_permissions(PermissionLevel.OWNER)
     @checks.thread_only()
     async def loglink(self, ctx):
