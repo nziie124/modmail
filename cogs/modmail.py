@@ -165,7 +165,7 @@ class Modmail(commands.Cog):
             )
             embed.set_footer(text=f'Check "{self.bot.prefix}help snippet add" to add a snippet.')
             embed.set_author(name="Snippets", icon_url=ctx.guild.icon_url)
-            return await ctx.send(content="{ctx.message.author.mention}-", embed=embed)
+            return await ctx.send(embed=embed)
 
         embeds = []
 
