@@ -635,7 +635,7 @@ class Modmail(commands.Cog):
 
     @commands.command()
     @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
-    async def test(ctx):
+    async def test(self, ctx):
         """A testing command - Ignore"""
         embed = discord.Embed(
             title="Testing Command",
