@@ -622,7 +622,7 @@ class Modmail(commands.Cog):
     @commands.command()
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def raw(self, ctx, message_id: int=None):
-        """`[New]` - 📄 Prints out the raw content of an embed (codeblock)."""
+        """`[⭐]` - 📄 Prints out the raw content of an embed (codeblock)."""
         if message_id is None:
             return await ctx.send(f"{ctx.message.author.mention}, Please provide a message ID!")
         
