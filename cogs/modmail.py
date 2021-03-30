@@ -286,7 +286,7 @@ class Modmail(commands.Cog):
             embed = create_not_found_embed(name, self.bot.snippets.keys(), "Snippet")
         await ctx.send(embed=embed)
 
-    @commands.command(usage="<category> [options]")
+    @commands.command(aliases=["transfer"], usage="<category> [options]")
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
     async def move(self, ctx, *, arguments):
