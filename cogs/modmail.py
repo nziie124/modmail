@@ -634,6 +634,18 @@ class Modmail(commands.Cog):
         await ctx.send(f"```{msgg.description}```")
 
     @commands.command()
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
+    @utils.trigger_typing
+    async def test(ctx):
+        """A testing command - Ignore"""
+        embed = discord.Embed(
+            title="Testing Command",
+            description="Test",
+            color=discord.Colour.random(),
+        )
+        return await ctx.send(content=ctx.message.author.mention , embed=embed)
+
+    @commands.command()
     @checks.has_permissions(PermissionLevel.OWNER)
     @checks.thread_only()
     async def loglink(self, ctx):
