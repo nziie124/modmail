@@ -155,7 +155,7 @@ class Modmail(commands.Cog):
                 embed = create_not_found_embed(name, self.bot.snippets.keys(), "Snippet")
             else:
                 embed = discord.Embed(
-                    title=f'Snippet - "{name}":', description=val, color=self.bot.main_color
+                    title=f'✂️ Snippet - "{name}":', description=val, color=self.bot.main_color
                 )
             return await ctx.send(embed=embed)
 
@@ -164,7 +164,7 @@ class Modmail(commands.Cog):
                 color=self.bot.error_color, description="You dont have any snippets at the moment."
             )
             embed.set_footer(text=f'Check "{self.bot.prefix}help snippet add" to add a snippet.')
-            embed.set_author(name="Snippets", icon_url=ctx.guild.icon_url)
+            embed.set_author(name="✂️ Snippets", icon_url=ctx.guild.icon_url)
             return await ctx.send(embed=embed)
 
         embeds = []
@@ -172,7 +172,7 @@ class Modmail(commands.Cog):
         for i, names in enumerate(zip_longest(*(iter(sorted(self.bot.snippets)),) * 15)):
             description = format_description(i, names)
             embed = discord.Embed(color=self.bot.main_color, description=description)
-            embed.set_author(name="Snippets", icon_url=ctx.guild.icon_url)
+            embed.set_author(name="✂️ Snippets", icon_url=ctx.guild.icon_url)
             embeds.append(embed)
 
         session = EmbedPaginatorSession(ctx, *embeds)
