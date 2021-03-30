@@ -650,7 +650,7 @@ class Modmail(commands.Cog):
     async def time(self, ctx):
         """🕐 Prints the current time in your area."""
         embed = discord.Embed(
-            timestamp=datetime.utcnow())
+            timestamp=datetime.utcnow(),
         )
         return await ctx.send(content=ctx.message.author.mention , embed=embed)
 
