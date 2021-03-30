@@ -634,7 +634,7 @@ class Modmail(commands.Cog):
         await ctx.send(f"```{msgg.description}```")
 
     @commands.command()
-    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def test(self, ctx):
         """A testing command - Ignore"""
         embed = discord.Embed(
