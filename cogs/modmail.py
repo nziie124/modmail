@@ -641,7 +641,7 @@ class Modmail(commands.Cog):
             description="<:patreon:826564054470361139> • [Our Patreon](https://www.patreon.com/wumpus_ads)",
             color=discord.Colour.orange(),
         )
-        return await ctx.send(content=ctx.message.author.mention , embed=embed)
+        return await ctx.send(embed=embed)
     
     @commands.command()
     @checks.has_permissions(PermissionLevel.REGULAR)
