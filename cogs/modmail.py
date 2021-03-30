@@ -644,13 +644,13 @@ class Modmail(commands.Cog):
             color=discord.Colour.random(),
         )
         return await ctx.send(content=ctx.message.author.mention , embed=embed)
-
+    
     @commands.command()
     @checks.has_permissions(PermissionLevel.REGULAR)
     async def members(self, ctx):
         """👤 Prints out the current server's member count."""
         embed = discord.Embed(
-            description=ctx.guild.member_count,
+            description="** `" + str(ctx.guild.member_count) + "` member(s)**",
             timestamp=datetime.utcnow(),
             color=discord.Colour.blurple(),
         )
