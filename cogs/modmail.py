@@ -619,20 +619,6 @@ class Modmail(commands.Cog):
             embed = discord.Embed(color=self.bot.main_color, description=message.jump_url)
         await ctx.send(embed=embed)
 
-    @commands.command
-    @checks.has_permissions(PermissionLevel.SUPPORTER)
-    async def raw(self, ctx, message_id: int=None):
-        """ 📄 Prints out the raw content of an embed (codeblock)."""
-        if message_id is None:
-            return await ctx.send(f"{ctx.message.author.mention}, Please provide a message ID!")
-        
-        try:
-            msg = await ctx.fetch_message(message_id)
-        except Exception as e:
-            print(str(e))
-        msgg = msg.embeds[0]
-        await ctx.send(f"```{msgg.description}```")
-
     @commands.command()
     @checks.has_permissions(PermissionLevel.REGULAR)
     async def patreon(self, ctx):
