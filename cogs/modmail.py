@@ -628,6 +628,20 @@ class Modmail(commands.Cog):
             color=discord.Colour.orange(),
         )
         return await ctx.send(embed=embed)
+
+    @commands.group()
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
+    async def raw(self, ctx, message_id: int=None):
+        """`[New]` - 📄 Prints out the raw content of an embed (codeblock)."""
+        if message_id is None:
+            return await ctx.send(f"{ctx.message.author.mention}, please provide a message ID!")
+        
+        try:
+            msg = await ctx.fetch_message(message_id)
+        except Exception as e:
+            print(str(e))
+        msgg = msg.embeds[0]
+        await ctx.send(f"```{msgg.description}```")
     
     @commands.command(aliases=["topgg"])
     @checks.has_permissions(PermissionLevel.REGULAR)
