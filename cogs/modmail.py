@@ -622,7 +622,7 @@ class Modmail(commands.Cog):
     @commands.command
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def raw(self, ctx, message_id: int=None):
-        """`[⭐]` - 📄 Prints out the raw content of an embed (codeblock)."""
+        """ 📄 Prints out the raw content of an embed (codeblock)."""
         if message_id is None:
             return await ctx.send(f"{ctx.message.author.mention}, Please provide a message ID!")
         
@@ -645,6 +645,16 @@ class Modmail(commands.Cog):
     
     @commands.command()
     @checks.has_permissions(PermissionLevel.REGULAR)
+    async def patreon(self, ctx):
+        """⬆ Shows our Top.gg voting link."""
+        embed = discord.Embed(
+            description="<:Upvote:827002320260300850> • [Vote here!](https://top.gg/servers/777720307334512670/vote)",
+            color=discord.Colour.blurple(),
+        )
+        return await ctx.send(embed=embed)
+
+    @commands.command()
+    @checks.has_permissions(PermissionLevel.REGULAR)
     async def members(self, ctx):
         """👤 Prints out the current server's member count."""
         embed = discord.Embed(
@@ -662,57 +672,6 @@ class Modmail(commands.Cog):
             timestamp=datetime.utcnow(),
         )
         return await ctx.send(content=ctx.message.author.mention , embed=embed)
-
-    @commands.command()
-    @checks.has_permissions(PermissionLevel.OWNER)
-    @checks.thread_only()
-    async def loglink(self, ctx):
-        """📬 Retrieves the link to the current thread's logs."""
-        log_link = await self.bot.api.get_log_link(ctx.channel.id)
-        await ctx.send(embed=discord.Embed(color=self.bot.main_color, description=log_link))
-
-    def format_log_embeds(self, logs, avatar_url):
-        embeds = []
-        logs = tuple(logs)
-        title = f"Total Results Found ({len(logs)})"
-
-        for entry in logs:
-            created_at = parser.parse(entry["created_at"])
-
-            prefix = self.bot.config["log_url_prefix"].strip("/")
-            if prefix == "NONE":
-                prefix = ""
-            log_url = f"{self.bot.config['log_url'].strip('/')}{'/' + prefix if prefix else ''}/{entry['key']}"
-
-            username = entry["recipient"]["name"] + "#"
-            username += entry["recipient"]["discriminator"]
-
-            embed = discord.Embed(color=self.bot.main_color, timestamp=created_at)
-            embed.set_author(name=f"{title} - {username}", icon_url=avatar_url, url=log_url)
-            embed.url = log_url
-            embed.add_field(name="Created", value=duration(created_at, now=datetime.utcnow()))
-            closer = entry.get("closer")
-            if closer is None:
-                closer_msg = "Unknown"
-            else:
-                closer_msg = f"<@{closer['id']}>"
-            embed.add_field(name="Closed By", value=closer_msg)
-
-            if entry["recipient"]["id"] != entry["creator"]["id"]:
-                embed.add_field(name="Created by", value=f"<@{entry['creator']['id']}>")
-
-            embed.add_field(name="Preview", value=format_preview(entry["messages"]), inline=False)
-
-            if closer is not None:
-                # BUG: Currently, logviewer can't display logs without a closer.
-                embed.add_field(name="Link", value=log_url)
-            else:
-                logger.debug("Invalid log entry: no closer.")
-                embed.add_field(name="Log Key", value=f"`{entry['key']}`")
-
-            embed.set_footer(text="Recipient ID: " + str(entry["recipient"]["id"]))
-            embeds.append(embed)
-        return embeds
 
     @commands.command(cooldown_after_parsing=True)
     @checks.has_permissions(PermissionLevel.MODERATOR)
