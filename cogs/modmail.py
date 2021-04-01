@@ -645,7 +645,7 @@ class Modmail(commands.Cog):
     
     @commands.command()
     @checks.has_permissions(PermissionLevel.REGULAR)
-    async def patreon(self, ctx):
+    async def vote(self, ctx):
         """⬆ Shows our Top.gg voting link."""
         embed = discord.Embed(
             description="<:Upvote:827002320260300850> • [Vote here!](https://top.gg/servers/777720307334512670/vote)",
