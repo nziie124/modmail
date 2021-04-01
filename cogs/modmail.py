@@ -629,7 +629,7 @@ class Modmail(commands.Cog):
         )
         return await ctx.send(embed=embed)
 
-    @commands.group()
+    @commands.command()
     @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def raw(self, ctx, message_id: int=None):
         """`[New]` - 📄 Prints out the raw content of an embed (codeblock)."""
