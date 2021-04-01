@@ -197,7 +197,7 @@ class Thread:
             else:
                 footer = self.bot.config["thread_creation_footer"]
 
-            embed.set_thumnail(url=self.bot.guild.icon_url)
+            embed.set_thumbnail(url=self.bot.guild.icon_url)
             embed.set_footer(text=footer, icon_url=self.bot.guild.icon_url)
             embed.title = self.bot.config["thread_creation_title"]
 
