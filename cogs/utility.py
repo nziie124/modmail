@@ -92,7 +92,7 @@ class ModmailHelpCommand(commands.HelpCommand):
 
             continued = " (Continued)" if embeds else ""
             name = cog.qualified_name + " - Help" if not no_cog else "Miscellaneous Commands"
-            embed.set_author(name=name + continued, icon_url=bot.user.avatar_url)
+            embed.set_author(name=name + continued, icon_url=self.bot.guild.icon_url)
 
             embed.set_footer(
                 text=f'Use "{prefix}{self.command_attrs["name"]} command" '
