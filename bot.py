@@ -1358,7 +1358,7 @@ class ModmailBot(commands.Bot):
         try:
             await thread.delete_message(message, note=False)
             embed = discord.Embed(
-                description="Successfully deleted message.", color=self.main_color
+                description="Successfully deleted message! ✅", color=self.main_color
             )
         except ValueError as e:
             if str(e) not in {"DM message not found.", "Malformed thread message."}:
@@ -1370,7 +1370,7 @@ class ModmailBot(commands.Bot):
                 return
         except discord.NotFound:
             return
-        embed.set_footer(text=f"Message ID: {message.id} from {message.author}.")
+        embed.set_footer(text=f"💬 Message ID: {message.id} from {message.author}.")
         return await message.channel.send(embed=embed)
 
     async def on_bulk_message_delete(self, messages):
