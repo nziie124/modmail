@@ -129,7 +129,7 @@ class Plugins(commands.Cog):
             logger.info("Plugins not loaded since ENABLE_PLUGINS=false.")
 
     async def populate_registry(self):
-        url = "https://raw.githubusercontent.com/kyb3r/modmail/master/plugins/registry.json"
+        url = "https://raw.githubusercontent.com/vNziie/modmail/master/plugins/registry.json"
         async with self.bot.session.get(url) as resp:
             self.registry = json.loads(await resp.text())
 
@@ -323,7 +323,7 @@ class Plugins(commands.Cog):
     @checks.has_permissions(PermissionLevel.OWNER)
     async def plugins(self, ctx):
         """
-        Manage plugins for Modmail.
+        🔌 Manage plugins for Modmail.
         """
 
         await ctx.send_help(ctx.command)
