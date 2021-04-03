@@ -671,7 +671,22 @@ class Modmail(commands.Cog):
         embed = discord.Embed(
             timestamp=datetime.utcnow(),
         )
-        return await ctx.send(content=ctx.message.author.mention , embed=embed)
+        return await ctx.send(embed=embed)
+
+    @commands.command(alises=["stafftraining", "training", "trainingform"])
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
+    async def train(self, ctx):
+        """📋 Prints out the Staff Training form link & with notes"""
+        embed = discord.Embed(
+            title="📬 Staff Training",
+            description="Training Link: [here](https://docs.google.com/forms/d/e/1FAIpQLSe1KBTuSFVr-_HeJYwzFLa9CI4W8MztEqI5rOJdQUaUklykIQ/viewform)",
+            color=discord.Colour.blurple(),
+            timestamp=datetime.utcnow(),
+        )
+            embed.add_field(name="Notes", value="If you have any questions, feel free to ask them in this ticket. However, we will **NOT** give you any answers or hints.\n\nIf you do not pass staff training within `2` weeks of being in the Staff Team, you will be **fired**!", inline=False)
+            embed.set_thumbnail(url=guild.icon_url)
+            embed.set_footer(text="Welcome to the Staff Team!", icon_url=ctx.message.author.avatar_url)
+        return await ctx.send(embed=embed)
 
     @commands.command(cooldown_after_parsing=True)
     @checks.has_permissions(PermissionLevel.MODERATOR)
