@@ -673,7 +673,7 @@ class Modmail(commands.Cog):
         )
         return await ctx.send(embed=embed)
 
-    @commands.command(alises=["stafftraining", "training", "trainingform"])
+    @commands.command(aliases=["stafftraining", "training", "trainingform"])
     @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def train(self, ctx):
         """📋 Prints out the Staff Training form link & with notes"""
