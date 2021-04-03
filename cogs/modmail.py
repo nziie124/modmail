@@ -688,6 +688,17 @@ class Modmail(commands.Cog):
         embed.set_footer(text="Welcome to the Staff Team!", icon_url="https://cdn.discordapp.com/icons/777720307334512670/a_cf3df3604dd3c3d6dbbd7b53d12ca1b3.gif?size=1024")
         return await ctx.send(embed=embed)
 
+    @commands.command(aliases=["importantlinks", "il"])
+    @checks.has_permissions(PermissionLevel.REGULAR)
+    async def links(self, ctx):
+        """🔗 Prints out important links for the server."""
+        embed = discord.Embed(
+            color=discord.Colour.blurple(),
+            timestamp=datetime.utcnow(),
+        )
+        embed.add_field(name="Important Links", value="<:patreon:826564054470361139> • [Patreon](https://patreon.com/wumpus_ads)\n<a:nitro_Boost:782506168236376074> • [Booster Perks](https://discord.com/channels/777720307334512670/783379594899095572/813147256387141682) \n <a:bell:801594598715686914> • [Reaction Roles](https://discord.com/channels/777720307334512670/801533597043261440/801611282490851338) \n <:Staff:827002111098093599> • [Apply For Staff](https://discord.com/channels/777720307334512670/777720307540295712/814606469185011753) \n <:Upvote:827002320260300850> • [Vote For Us](https://top.gg/servers/777720307334512670/vote) \n 👥 • [Join Our Alliance](https://discord.com/channels/777720307334512670/807995086846951434/808398862930149457)", inline=False)
+        return await ctx.send(embed=embed)
+
     @commands.command(cooldown_after_parsing=True)
     @checks.has_permissions(PermissionLevel.MODERATOR)
     @checks.thread_only()
