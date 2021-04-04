@@ -654,6 +654,18 @@ class Modmail(commands.Cog):
         return await ctx.send(embed=embed)
 
     @commands.command()
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
+    async def inactivity(self, ctx, member: discord.Member):
+        """A command that lets a specified Staff member know that they are inactive."""
+        try:
+            await member.send(
+                "What’s Up!\n\nThis is an automated message from the `WA Management Team`.\n\n*It has recently come to our attention that you have been a little inactive!* 💤 \n\nWe hope you are doing 👌 and staying safe. We would appreciate if you would  There are going to be directions in the announcements channel `[you will see after you verify]` on how to fill out a break request correctly.\n\n*Cheers!*\n`~` **Operations Management**\n*Wumpus Ads*"
+            )
+            await ctx.send(f"**Notice sent to `{member.name}`!**")
+        except:
+            await ctx.send("**Their dms are closed or they blocked the bot.**")
+
+    @commands.command()
     @checks.has_permissions(PermissionLevel.REGULAR)
     async def members(self, ctx):
         """👤 Prints out the current server's member count."""
