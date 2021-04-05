@@ -653,7 +653,7 @@ class Modmail(commands.Cog):
         )
         return await ctx.send(embed=embed)
 
-    @commands.command(aliases=[""applyforstaff"])
+    @commands.command(aliases=["applyforstaff"])
     @checks.has_permissions(PermissionLevel.REGULAR)
     async def joinstaff(self, ctx):
         """🎓 Shows our Staff Applications"""
