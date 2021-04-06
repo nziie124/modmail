@@ -155,7 +155,7 @@ class Modmail(commands.Cog):
 
         await ctx.send(
             embed=discord.Embed(
-                description=f"<a:wumpus_thbs_up:798654709694333019> Purged {amount} {messages}!",
+                description=f"✅ Purged {amount} {messages}!",
                 color=self.bot.main_color,
             )
         )
