@@ -125,6 +125,14 @@ class Modmail(commands.Cog):
             for owner_id in self.bot.bot_owner_ids:
                 await self.bot.update_perms(PermissionLevel.OWNER, owner_id)
 
+    @commands.command()
+    @checks.has_permissions(Permission.Level.ADMINISTRATOR)
+    async def testrole(self, ctx, member: discord.Member):
+        """Adds the given roles to the user."""
+        roles = [782059709272031303, 826454962342592582]
+        await member.add_roles(*[member.guild.get_role(role) for role in roles])
+        await ctx.send("Done!")
+
     @commands.command(usage="<amount>")
     @checks.has_permissions(PermissionLevel.OWNER)
     async def purge(self, ctx, amount: int = 1):
