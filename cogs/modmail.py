@@ -287,7 +287,7 @@ class Modmail(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(aliases=["sm"])
-    @checks.has_permissions(PermissionLevel.MODERATOR)
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def slowmode(self, ctx, time):
         """🕐 Set a slowmode to a channel
         It is not possible to set a slowmode longer than 6 hours
