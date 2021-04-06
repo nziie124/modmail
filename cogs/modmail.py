@@ -157,7 +157,7 @@ class Modmail(commands.Cog):
             embed=discord.Embed(
                 description=f"✅ Purged {amount} {messages}!",
                 color=self.bot.main_color,
-            )
+            ), delete_after=7
         )
 
     @commands.group(aliases=["snippets"], invoke_without_command=True)
