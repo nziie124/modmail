@@ -289,7 +289,7 @@ class Modmail(commands.Cog):
     @commands.command(aliases=["sm"])
     @checks.has_permissions(PermissionLevel.MODERATOR)
     async def slowmode(self, ctx, time):
-        """Set a slowmode to a channel
+        """🕐 Set a slowmode to a channel
         It is not possible to set a slowmode longer than 6 hours
         """
 
@@ -319,9 +319,9 @@ class Modmail(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(aliases=["sm_off"])
-    @checks.has_permissions(PermissionLevel.MODERATOR)
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def slowmode_off(self, ctx, channel: discord.TextChannel = None):
-        """Turn off the slowmode in a channel"""
+        """🕕 Turn off the slowmode in a channel"""
         seconds_off = 0
         await ctx.channel.edit(slowmode_delay=seconds_off)
         embed=discord.Embed(description=f"Turned **off** the slowmode in {ctx.channel.mention}", color=discord.Colour.green())
