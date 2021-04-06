@@ -133,8 +133,7 @@ class Modmail(commands.Cog):
         if amount > max:
             return await ctx.send(
                 embed=discord.Embed(
-                    title="Error",
-                    description=f"You can only purge up to 2000 messages.",
+                    description=f"<a:wumpus_Shocked:798654976925892627> • You can only purge up to 2000 messages.",
                     color=discord.Color.red(),
                 ).set_footer(text=f"Use {ctx.prefix}purge <amount> to purge.")
             )
@@ -156,8 +155,7 @@ class Modmail(commands.Cog):
 
         await ctx.send(
             embed=discord.Embed(
-                title="Success",
-                description=f"✅ Purged {amount} {messages}!",
+                description=f"<a:wumpus_thbs_up:798654709694333019> • Purged {amount} {messages}!",
                 color=self.bot.main_color,
             ), delete_after=8
         )
