@@ -324,8 +324,8 @@ class Modmail(commands.Cog):
         """Turn off the slowmode in a channel"""
         seconds_off = 0
         await ctx.channel.edit(slowmode_delay=seconds_off)
-        embed=discord.Embed(description=f"{ctx.author.mention} turned off the slowmode in {channel.mention}", color=0x06c9ff)
-        embed.set_author(name="Slow Mode")
+        embed=discord.Embed(description=f"{ctx.author.mention} turned off the slowmode in {ctx.channel.mention}", color=0x06c9ff)
+        embed.set_author(name="Slowmode", icon_url=self.bot.guild.icon_url)
         await ctx.send(embed=embed)
 
     @commands.command(aliases=["transfer"], usage="<category> [options]")
