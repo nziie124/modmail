@@ -138,9 +138,11 @@ class Modmail(commands.Cog):
             if not reason.endswith("."):
                 reason = reason + "."
 
-        msg = f"⚠ You have been warned in {ctx.guild.name}" + (
-            f" for: *{reason}*" if reason else "."
-        )
+        embed = discord.Embed(
+                    description=f"⚠ You have been warned in {ctx.guild.name} for: *{reason}*", 
+                    color=discord.Colour.red(),
+                    timestamp=datetime.utcnow(),
+        ).set_footer(text="⚠ You are warned", icon_url=member.avatar_url)
 
         try:
             await member.send(msg)
