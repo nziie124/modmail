@@ -133,7 +133,7 @@ class Modmail(commands.Cog):
         if amount > max:
             return await ctx.send(
                 embed=discord.Embed(
-                    description=f"<a:wumpus_Shocked:798654976925892627> • You can only purge up to 2000 messages.",
+                    description="<a:wumpus_Shocked:798654976925892627> • You can only purge up to 2000 messages.",
                     color=discord.Color.red(),
                 ).set_footer(text=f"Use {ctx.prefix}purge <amount> to purge.")
             )
