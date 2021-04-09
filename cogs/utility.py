@@ -270,7 +270,7 @@ class Utility(commands.Cog):
         self.bot.help_command = self._original_help_command
 
     @commands.Cog.listener()
-    async def on_member_join(self, member: discord.Member):
+    async def on_member_join(self.bot, member: discord.Member):
         if member.guild.id != 777720307334512670:
             return
     embed = discord.Embed(title="Welcome!", description=f"Welcome to the server {member.mention}! - This welcome message is currently being writen and is not finished yet. Please bare with us! `-` All the information about this server should have been sent to you via DMs by <@!155149108183695360>. Soon, all that information will be on this message.", timestamp=datetime.utcnow(), color=discord.Colour.random())
