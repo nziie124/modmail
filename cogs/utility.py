@@ -326,18 +326,18 @@ class Utility(commands.Cog):
         embed.set_footer(text=footer)
         await ctx.send(embed=embed)
 
-    @commands.Cog.listener()
-    async def on_member_join(self, member: discord.Member):
-        if member.guild.id != 777720307334512670:
-            return
-        channel = member.guild.get_channel(777720307540295718)
-        embed = discord.Embed(
-            title="Welcome",
-            description="Welcome description",
-            timestamp=datetime.utcnow(),
-            color=discord.Colour.random(),
-    )
-        await channel.send(embed=embed)
+    # @commands.Cog.listener()
+    # async def on_member_join(self, member: discord.Member):
+        # if member.guild.id != 777720307334512670:
+            # return
+        # channel = member.guild.get_channel(777720307540295718)
+        # embed = discord.Embed(
+            # title="Welcome",
+            # description="Welcome description",
+            # timestamp=datetime.utcnow(),
+            # color=discord.Colour.random(),
+    # )
+        # await channel.send(embed=embed) 
 
     @commands.group(invoke_without_command=True)
     @checks.has_permissions(PermissionLevel.OWNER)
