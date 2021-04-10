@@ -330,7 +330,7 @@ class Utility(commands.Cog):
     async def on_member_join(self, member: discord.Member):
         if member.guild.id != 777720307334512670:
             return
-        channel = ctx.guild.get_channel(777720307540295718)
+        channel = member.guild.get_channel(777720307540295718)
         embed = discord.Embed(
             title="Welcome",
             description="Welcome description",
