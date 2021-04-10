@@ -330,11 +330,14 @@ class Utility(commands.Cog):
     async def on_member_join(self, member: discord.Member):
         if member.guild.id != 777720307334512670:
             return
-        embed = discord.Embed(title="Welcome!", description=f"Welcome to the server {member.mention}! - This welcome message is currently being writen and is not finished yet. Please bare with us! `-` All the information about this server should have been sent to you via DMs by <@!155149108183695360>. Soon, all that information will be on this message.", timestamp=datetime.utcnow(), color=discord.Colour.random())
- 
-        embed.set_footer(text=f"👤 User ID: {member.id}", icon_url=member.avatar_url)
-           embed.set_thumbnail(url=member.avatar_url)
-        await self.bot.get_channel(777720307540295718).send(content=f"**Welcome {member.mention}!**", embed=embed)
+        channel = ctx.guild.get_channel(777720307540295718)
+        embed = discord.Embed(
+            title="Welcome",
+            description="Welcome description",
+            timestamp=datetime.utcnow(),
+            color=discord.Colour.random(),
+    )
+        await channel.send(embed=embed)
 
     @commands.group(invoke_without_command=True)
     @checks.has_permissions(PermissionLevel.OWNER)
