@@ -270,7 +270,7 @@ class Utility(commands.Cog):
         self.bot.help_command = self._original_help_command
 
     @commands.Cog.listener()
-    async def on_member_join(self, member: discord.Member):
+    async def on_member_join(ctx, self, member: discord.Member):
         if member.guild.id != 777720307334512670:
             return
         channel = ctx.guild.get_channel(777720307540295718)
