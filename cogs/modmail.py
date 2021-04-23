@@ -502,17 +502,12 @@ class Modmail(commands.Cog):
         mentions = self.bot.config["notification_squad"][str(thread.id)]
 
         if mention not in mentions:
-            embed = discord.Embed(
-                color=self.bot.error_color,
-                description=f"🔕 {mention} does not have a pending notification!",
-            )
+            await ctx.message.reply(f"🔕 {mention} does not have a pending notification!")
+
         else:
             mentions.remove(mention)
             await self.bot.config.update()
-            embed = discord.Embed(
-                color=self.bot.main_color, description=f"🔕 {mention} will no longer be notified!"
-            )
-        return await ctx.send(embed=embed)
+            await ctx.message.reply(f"🔕 {mention} will no longer be notified!")
 
     @commands.command(aliases=["sub"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
@@ -539,18 +534,12 @@ class Modmail(commands.Cog):
         mentions = self.bot.config["subscriptions"][str(thread.id)]
 
         if mention in mentions:
-            embed = discord.Embed(
-                color=self.bot.error_color,
-                description=f"🔕 {mention} is not subscribed to this thread!",
-            )
+            await ctx.message.reply(f"🔕 {mention} is not subscribed to this thread!")
+
         else:
             mentions.append(mention)
             await self.bot.config.update()
-            embed = discord.Embed(
-                color=self.bot.main_color,
-                description=f"🔔 {mention} will now be notified of all messages received!",
-            )
-        return await ctx.send(embed=embed)
+            await ctx.message.reply(f"🔔 {mention} will now be notified of all messages received!")
 
     @commands.command(aliases=["unsub"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
@@ -576,18 +565,11 @@ class Modmail(commands.Cog):
         mentions = self.bot.config["subscriptions"][str(thread.id)]
 
         if mention not in mentions:
-            embed = discord.Embed(
-                color=self.bot.error_color,
-                description=f"🔕 {mention} is not subscribed to this thread!",
-            )
+            await ctx.message.reply(f"🔕 {mention} is not subscribed to this thread!")
         else:
             mentions.remove(mention)
             await self.bot.config.update()
-            embed = discord.Embed(
-                color=self.bot.main_color,
-                description=f"🔕 {mention} is now unsubscribed from this thread!",
-            )
-        return await ctx.send(embed=embed)
+            await ctx.message.reply(f"🔕 {mention} is now unsubscribed from this thread!")
 
     @commands.command()
     @checks.has_permissions(PermissionLevel.MODERATOR)
