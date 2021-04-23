@@ -476,7 +476,7 @@ class Modmail(commands.Cog):
         else:
             mentions.append(mention)
             await self.bot.config.update()
-            await ctx.messages.reply(f"🔔 {mention} will be mentioned on the next message received.")
+            await ctx.message.reply(f"🔔 {mention} will be mentioned on the next message received.")
 
     @commands.command(aliases=["unalert", "unpingme"])
     @checks.has_permissions(PermissionLevel.SUPPORTER)
