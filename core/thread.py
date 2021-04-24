@@ -444,7 +444,7 @@ class Thread:
         embed = discord.Embed(description=desc, color=self.bot.error_color)
 
         if self.recipient is not None:
-            user = f"{self.recipient} (`{self.id}`)"
+            user = f"{self.recipient} ({self.id})"
         else:
             user = f"`{self.id}`"
 
