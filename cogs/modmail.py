@@ -125,6 +125,7 @@ class Modmail(commands.Cog):
                 await self.bot.update_perms(PermissionLevel.OWNER, owner_id)
 
     @commands.command(aliases=["mine"])
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def claim(self, ctx):
         """🔗 Claims the current thread as yours."""
         embed = discord.Embed(title="Thread Claimed!", description=f"{ctx.author.mention} has claimed this thread.", color=ctx.author.color, timestamp=datetime.utcnow())
@@ -132,6 +133,7 @@ class Modmail(commands.Cog):
         await ctx.send(content=ctx.author.mention, embed=embed)
 
     @commands.command(aliases=["unclaim"])
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def rclaim(self, ctx):
         """🔗 Un-claims the current thread as yours."""
         embed = discord.Embed(title="Thread Unclaimed!", description=f"{ctx.author.mention} has un-claimed this thread.\n\n**Thread is up for grabs!**", color=ctx.author.color, timestamp=datetime.utcnow())
@@ -147,6 +149,7 @@ class Modmail(commands.Cog):
         await ctx.send(content=ctx.author.mention, embed=embed)
 
     @commands.command()
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
     @checks.thread_only()
     async def id(self, ctx):
         """💬 Prints out the thread user's ID."""
