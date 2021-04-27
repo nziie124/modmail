@@ -3,7 +3,9 @@ import inspect
 import os
 import random
 import re
+import time
 import traceback
+from discord.ext.commands.cooldowns import BucketType
 from contextlib import redirect_stdout
 from datetime import datetime
 from difflib import get_close_matches
@@ -607,16 +609,13 @@ class Utility(commands.Cog):
         logger.info("Starting presence loop.")
 
     @commands.command()
-    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
-    @utils.trigger_typing
+    @commands.cooldown(1, 5, BucketType.guild)
     async def ping(self, ctx):
-        """🏓 Pong! Returns your websocket latency."""
-        embed = discord.Embed(
-            title="🏓 Pong! Websocket Latency:",
-            description=f"`{self.bot.ws.latency * 1000:.4f}ms`",
-            color=discord.Colour.random(),
-        )
-        return await ctx.send(embed=embed)
+      start = time.perf_counter()
+      message = await ctx.send("🏓 Ping?")
+      end = time.perf_counter()
+      duration = (end - start) * 1000
+      await message.edit(content='🏓 Pong! {:.2f}ms'.format(duration))
 
     @commands.command()
     @checks.has_permissions(PermissionLevel.OWNER)
