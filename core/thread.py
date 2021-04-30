@@ -176,7 +176,6 @@ class Thread:
             try:
                 msg = await channel.send(mention, embed=info_embed)
                 self.bot.loop.create_task(msg.pin())
-                self.genesis_message = msg
             except Exception:
                 logger.error("Failed unexpectedly:", exc_info=True)
 
