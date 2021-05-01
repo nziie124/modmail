@@ -176,6 +176,7 @@ class Thread:
             try:
                 msg = await channel.send(mention, embed=info_embed)
                 self.bot.loop.create_task(msg.pin())
+                self.genesis_message = msg
             except Exception:
                 logger.error("Failed unexpectedly:", exc_info=True)
 
@@ -184,7 +185,7 @@ class Thread:
             thread_creation_response = self.bot.config["thread_creation_response"]
 
             embed = discord.Embed(
-                color=self.bot.mod_color,
+                color=discord.Colour.random(),
                 description=thread_creation_response,
                 timestamp=channel.created_at,
             )
@@ -201,7 +202,7 @@ class Thread:
             embed.title = self.bot.config["thread_creation_title"]
 
             if creator is None or creator == recipient:
-                msg = await recipient.send(content="<a:wumpus_thbs_Up:798654709694333019> **Thread Created!**", embed=embed)
+                msg = await recipient.send(embed=embed)
 
                 if recipient_thread_close:
                     close_emoji = self.bot.config["close_emoji"]
@@ -293,7 +294,7 @@ class Thread:
 
         created = str((time - user.created_at).days)
         embed = discord.Embed(
-            color=color, description=f"{user.mention} `[{user.id}]` was created `{days(created)}`", timestamp=time
+            color=color, description=f"👤 {user.mention} `[{user.id}]` was created `{days(created)}`", timestamp=time
         )
         embed.set_thumbnail(url=user.avatar_url)
 
@@ -443,7 +444,7 @@ class Thread:
         embed = discord.Embed(description=desc, color=self.bot.error_color)
 
         if self.recipient is not None:
-            user = f"{self.recipient} ({self.id})"
+            user = f"{self.recipient} (`{self.id}`)"
         else:
             user = f"`{self.id}`"
 
@@ -1264,3 +1265,4 @@ class ThreadManager:
 
     async def find_or_create(self, recipient) -> Thread:
         return await self.find(recipient=recipient) or await self.create(recipient)
+
